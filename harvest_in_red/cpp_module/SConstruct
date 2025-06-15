@@ -1,23 +1,28 @@
 import os
 
-# Forçar o uso de g++ ao invés de cl.exe (MSVC)
-env = Environment(CC='g++', CXX='g++')
+env = Environment(tools=['default', 'msvc'], CC='cl', CXX='cl')
 
-# Caminho correto para os headers e a lib que você compilou
-godot_headers_path = os.path.join("..", "..", "godot-cpp", "include")
-godot_cpp_path = os.path.join("..", "..", "godot-cpp")
+# Caminhos dos headers do Godot C++
+godot_headers_path = os.path.join("..", "..", "..", "godot-cpp", "include")
+godot_cpp_path = os.path.join("..", "..", "..", "godot-cpp")
 
-# Incluir os paths nos flags de compilação
-env.Append(CPPPATH=[godot_headers_path, godot_cpp_path])
+# Incluindo todos os caminhos necessários
+env.Append(CPPPATH=[
+    godot_headers_path,
+    godot_cpp_path,
+    os.path.join(godot_headers_path, "godot_cpp")
+])
+
+# Incluindo caminho para as libs
 env.Append(LIBPATH=[godot_cpp_path])
 
-# Fontes do seu módulo
+# Fontes do módulo
 sources = Glob("src/*.cpp")
 
 # Nome da lib final
 target_name = "libexample"
 
-# Gera o static library
+# Geração da static library
 target = env.StaticLibrary(target_name, sources)
 
 Default(target)
