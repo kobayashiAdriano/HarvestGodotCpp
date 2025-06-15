@@ -1,0 +1,194 @@
+{
+  "header": {
+    "version_major": 4,
+    "version_minor": 2,
+    "version_patch": 1,
+    "version_status": "stable",
+    "version_build": "debug",
+    "version_full_name": "Godot Engine v4.2.1.stable.debug"
+  },
+  "version": { "major": 4, "minor": 2, "patch": 1 },
+  "builtin_class_sizes": [
+    {
+      "build_configuration": "float_32",
+      "sizes": [
+        { "name": "Nil", "size": 1 },
+        { "name": "bool", "size": 1 },
+        { "name": "int", "size": 8 },
+        { "name": "float", "size": 4 },
+        { "name": "String", "size": 8 },
+        { "name": "Vector2", "size": 8 },
+        { "name": "Vector3", "size": 12 },
+        { "name": "Variant", "size": 16 }
+      ]
+    }
+  ],
+  "builtin_classes": [
+    {
+      "name": "Vector2",
+      "is_keyed": false,
+      "members": [
+        { "name": "x", "type": "float" },
+        { "name": "y", "type": "float" }
+      ],
+      "operators": [
+        { "name": "==", "right_type": "Vector2", "return_type": "bool" },
+        { "name": "!=", "right_type": "Vector2", "return_type": "bool" }
+      ]
+    },
+    {
+      "name": "Vector3",
+      "is_keyed": false,
+      "members": [
+        { "name": "x", "type": "float" },
+        { "name": "y", "type": "float" },
+        { "name": "z", "type": "float" }
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "name": "Object",
+      "is_refcounted": false,
+      "is_instantiable": true,
+      "api_type": "core",
+      "methods": [
+        {
+          "name": "get_class",
+          "return_value": { "type": "String" },
+          "is_const": true,
+          "is_static": false,
+          "is_vararg": false,
+          "is_virtual": false,
+          "hash": 0
+        },
+        {
+          "name": "is_class",
+          "arguments": [ { "name": "class", "type": "String" } ],
+          "return_value": { "type": "bool" },
+          "is_const": true,
+          "is_static": false,
+          "is_vararg": false,
+          "is_virtual": false,
+          "hash": 0
+        }
+      ],
+      "constants": [],
+      "signals": [],
+      "properties": [],
+      "enums": []
+    },
+    {
+      "name": "Resource",
+      "inherits": "Object",
+      "is_refcounted": true,
+      "is_instantiable": true,
+      "api_type": "core",
+      "methods": [
+        {
+          "name": "set_name",
+          "arguments": [ { "name": "name", "type": "StringName" } ],
+          "is_const": false,
+          "is_static": false,
+          "is_vararg": false,
+          "is_virtual": false,
+          "hash": 0
+        },
+        {
+          "name": "get_name",
+          "return_value": { "type": "String" },
+          "is_const": true,
+          "is_static": false,
+          "is_vararg": false,
+          "is_virtual": false,
+          "hash": 0
+        }
+      ],
+      "properties": [
+        { "type": "String", "name": "resource_name", "setter": "set_name", "getter": "get_name" }
+      ],
+      "signals": [],
+      "constants": [],
+      "enums": []
+    },
+    {
+      "name": "Node",
+      "inherits": "Object",
+      "is_refcounted": false,
+      "is_instantiable": true,
+      "api_type": "core",
+      "methods": [
+        {
+          "name": "add_child",
+          "arguments": [ { "name": "node", "type": "Node" } ],
+          "is_const": false,
+          "is_static": false,
+          "is_vararg": false,
+          "is_virtual": false,
+          "hash": 0
+        },
+        {
+          "name": "remove_child",
+          "arguments": [ { "name": "node", "type": "Node" } ],
+          "is_const": false,
+          "is_static": false,
+          "is_vararg": false,
+          "is_virtual": false,
+          "hash": 0
+        },
+        {
+          "name": "_process",
+          "arguments": [ { "name": "delta", "type": "float" } ],
+          "is_const": false,
+          "is_static": false,
+          "is_vararg": false,
+          "is_virtual": true,
+          "hash": 0
+        }
+      ],
+      "signals": [
+        { "name": "tree_entered" },
+        { "name": "tree_exiting" }
+      ],
+      "properties": [
+        { "type": "String", "name": "name", "setter": "set_name", "getter": "get_name" }
+      ],
+      "constants": [
+        { "name": "NOTIFICATION_ENTER_TREE", "value": 10 },
+        { "name": "NOTIFICATION_EXIT_TREE", "value": 11 }
+      ],
+      "enums": [
+        {
+          "name": "ProcessMode",
+          "is_bitfield": false,
+          "values": [
+            { "name": "PROCESS_MODE_INHERIT", "value": 0 },
+            { "name": "PROCESS_MODE_PAUSABLE", "value": 1 }
+          ]
+        }
+      ]
+    }
+  ],
+  "global_constants": [
+    { "name": "PROPERTY_HINT_NONE", "value": 0 },
+    { "name": "PROPERTY_HINT_RANGE", "value": 1 }
+  ],
+  "global_enums": [
+    {
+      "name": "Side",
+      "is_bitfield": false,
+      "values": [
+        { "name": "SIDE_LEFT", "value": 0 },
+        { "name": "SIDE_RIGHT", "value": 1 }
+      ]
+    }
+  ],
+  "native_structures": [
+    { "name": "ObjectID", "format": "uint64_t id" },
+    { "name": "AudioFrame", "format": "float left;float right" }
+  ],
+  "singletons": [
+    { "name": "Engine", "type": "Engine" },
+    { "name": "Input", "type": "Input" }
+  ]
+}
