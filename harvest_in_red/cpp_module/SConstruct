@@ -1,28 +1,30 @@
 import os
 
-env = Environment(tools=['default', 'msvc'], CC='cl', CXX='cl')
+platform = ARGUMENTS.get('platform', '')
+env = Environment()
 
-# Caminhos dos headers do Godot C++
-godot_headers_path = os.path.join("..", "..", "..", "godot-cpp", "include")
-godot_cpp_path = os.path.join("..", "..", "..", "godot-cpp")
+root = os.path.join('..', '..', 'godot-cpp')
 
-# Incluindo todos os caminhos necessários
 env.Append(CPPPATH=[
-    godot_headers_path,
-    godot_cpp_path,
-    os.path.join(godot_headers_path, "godot_cpp")
+    os.path.join(root, 'include'),
+    os.path.join(root, 'include', 'godot_cpp'),
+    os.path.join(root, 'gdextension'),
 ])
 
-# Incluindo caminho para as libs
-env.Append(LIBPATH=[godot_cpp_path])
+env.Append(LIBPATH=[os.path.join(root, 'bin')])
+env.Append(LIBS=['godot-cpp'])
 
-# Fontes do módulo
-sources = Glob("src/*.cpp")
+sources = ['register_types.cpp'] + Glob('src/*.cpp')
 
-# Nome da lib final
-target_name = "libexample"
+suffix = '.so'
+if platform == 'windows':
+    suffix = '.dll'
+elif platform == 'macos':
+    suffix = '.dylib'
 
-# Geração da static library
-target = env.StaticLibrary(target_name, sources)
+env['SHLIBSUFFIX'] = suffix
 
-Default(target)
+os.makedirs('bin', exist_ok=True)
+lib = env.SharedLibrary('bin/example', sources)
+
+Default(lib)
