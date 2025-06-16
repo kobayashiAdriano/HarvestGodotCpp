@@ -1,0 +1,30 @@
+#include "../include/register_types.hpp"
+#include "../include/example_class.hpp"
+
+using namespace godot;
+
+void initialize_harvestgodotcpp_module(ModuleInitializationLevel p_level) {
+    if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+        return;
+    }
+
+    ClassDB::register_class<ExampleClass>();
+}
+
+void uninitialize_harvestgodotcpp_module(ModuleInitializationLevel p_level) {
+    if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+        return;
+    }
+}
+
+extern "C" {
+GDExtensionBool GDE_EXPORT example_library_init(const GDExtensionInterface *p_interface,
+                                                GDExtensionClassLibraryPtr p_library,
+                                                GDExtensionInitialization *r_initialization) {
+    static GDExtensionBinding::InitObject init_obj(p_interface, p_library, r_initialization);
+    init_obj.register_initializer(initialize_harvestgodotcpp_module);
+    init_obj.register_terminator(uninitialize_harvestgodotcpp_module);
+    init_obj.set_minimum_library_initialization_level(MODULE_INITIALIZATION_LEVEL_SCENE);
+    return init_obj.init();
+}
+}

@@ -1,0 +1,6 @@
+[configuration]
+entry_symbol = "example_library_init"
+libraries = [
+    "res://bin/libHarvestGodotCpp.windows.debug.x86_64.dll",
+    "res://bin/libHarvestGodotCpp.windows.release.x86_64.dll"
+]
