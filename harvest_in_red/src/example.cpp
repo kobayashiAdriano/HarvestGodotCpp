@@ -1,6 +1,6 @@
-#include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/core/class_db.hpp>
-#include <godot_cpp/godot.hpp>
+#include <classes/node3d.hpp>
+#include <core/class_db.hpp>
+#include <godot.hpp>
 
 using namespace godot;
 
