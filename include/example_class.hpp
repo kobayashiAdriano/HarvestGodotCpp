@@ -13,7 +13,7 @@ public:
     ExampleClass() = default;
     ~ExampleClass() = default;
 
-    void _process(double delta);
+    void example_method();
 };
 
 }
