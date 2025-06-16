@@ -8,6 +8,10 @@ root = os.path.join('..', '..', 'godot-cpp')
 env.Append(CPPPATH=[
     os.path.join(root, 'include'),
     os.path.join(root, 'include', 'godot_cpp'),
+    os.path.join(root, 'include', 'godot_cpp', 'classes'),
+    os.path.join(root, 'core'),
+    os.path.join(root, 'variant'),
+    os.path.join(root, 'templates'),
     os.path.join(root, 'gdextension'),
 ])
 
